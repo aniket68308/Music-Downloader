@@ -62,9 +62,16 @@ def download_songs_all(all_links):
 
 
 def main():
-	filename = "playlist.txt"
-	list_of_songs = return_list_of_songs(filename)
-	list_of_youtube_urls = get_list_of_links(list_of_songs)
-	download_songs_all(list_of_youtube_urls)
+	list_of_type = int(input("\n1. For text file\n2. For individual song\n"))
+	if list_of_type == 1:
+		filename = raw_input("\nEnter the text file name :-\n")
+		list_of_songs = return_list_of_songs(filename)
+		list_of_youtube_urls = get_list_of_links(list_of_songs)
+		download_songs_all(list_of_youtube_urls)
+	elif list_of_type == 2:
+		songs_name = raw_input("Enter the songs name :-\n")
+		url_for_song = get_list_of_links([songs_name])
+		download_songs_all(url_for_song)
 
-main()
+if __name__ == "__main__":
+	main()
